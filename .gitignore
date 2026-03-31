@@ -1,0 +1,17 @@
+# Байт-код Python (кеш)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Виртуальное окружение
+venv/
+ENV/
+env/
+
+# Конфигурация и секреты
+config.py
+.env
+
+# База данных
+src/backend/*.db

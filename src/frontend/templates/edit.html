@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0">Редагувати контакт</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('edit_contact', id=contact.id) }}">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Ім'я <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="first_name" value="{{ contact.first_name if contact else '' }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Прізвище</label>
+                            <input type="text" class="form-control" name="last_name" value="{{ contact.last_name or '' }}">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Домашній телефон <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" name="phone_home" value="{{ phone_home if phone_home else '' }}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Робочий телефон</label>
+                            <input type="tel" class="form-control" name="phone_work" value="{{ phone_work if phone_work else '' }}">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" value="{{ email }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Місто</label>
+                            <input type="text" class="form-control" name="city" value="{{ city }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Адреса</label>
+                            <input type="text" class="form-control" name="address" value="{{ address }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Категорія</label>
+                            <select class="form-select" name="category">
+                                <option value="" {% if not category %}selected{% endif %}>Без категорії</option>
+                                <option value="Родина" {% if category == 'Родина' %}selected{% endif %}>Родина</option>
+                                <option value="Робота" {% if category == 'Робота' %}selected{% endif %}>Робота</option>
+                                <option value="Друзі" {% if category == 'Друзі' %}selected{% endif %}>Друзі</option>
+                                <option value="Колеги" {% if category == 'Колеги' %}selected{% endif %}>Колеги</option>
+                                <option value="Послуги" {% if category == 'Послуги' %}selected{% endif %}>Послуги</option>
+                                <option value="Інше" {% if category == 'Інше' %}selected{% endif %}>Інше</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Примітки</label>
+                        <textarea class="form-control" name="notes" rows="3">{{ contact.notes or '' }}</textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Скасувати</a>
+                        <button type="submit" class="btn btn-warning">Оновити дані</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

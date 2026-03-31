@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Додати новий контакт</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('add_contact') }}">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Ім'я <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="first_name" placeholder="Іван" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Прізвище</label>
+                            <input type="text" class="form-control" name="last_name" placeholder="Франко">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Домашній телефон <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" name="phone_home" placeholder="+380..." required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Робочий телефон</label>
+                            <input type="tel" class="form-control" name="phone_work" placeholder="+380...">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="example@mail.com">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Місто</label>
+                            <input type="text" class="form-control" name="city" placeholder="Київ">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Адреса</label>
+                            <input type="text" class="form-control" name="address" placeholder="Вул. Хрещатик, 1">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Категорія</label>
+                            <select class="form-select" name="category">
+                                <option value="">Без категорії</option>
+                                <option value="Родина">Родина</option>
+                                <option value="Робота">Робота</option>
+                                <option value="Друзі">Друзі</option>
+                                <option value="Колеги">Колеги</option>
+                                <option value="Послуги">Послуги</option>
+                                <option value="Інше">Інше</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Примітки</label>
+                        <textarea class="form-control" name="notes" rows="3" placeholder="Додаткова інформація..."></textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{{ url_for('index') }}" class="btn btn-secondary">Скасувати</a>
+                        <button type="submit" class="btn btn-primary">Зберегти контакт</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
