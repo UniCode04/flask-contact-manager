@@ -16,8 +16,8 @@
 
 1. **Клонування репозиторію:**
 ```Bash
-git clone [Вставте посилання на GitHub]
-cd [назва_папки]
+git clone https://github.com/UniCode04/flask-contact-manager.git
+cd flask-contact-manager
 ```
 
 2. **Створення віртуального оточення та встановлення залежностей:**
